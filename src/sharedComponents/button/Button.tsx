@@ -1,25 +1,30 @@
-import React from 'react'
-import { ButtonBody } from './Theme'
-interface ButtonStyle{
-    hoverBackgroundColor?: string;
-    backgroundColor?: string;
-    color?: string;
+import React from "react";
+import { ButtonBody } from "./Theme";
+interface ButtonStyle {
+  hoverBackgroundColor?: string;
+  backgroundColor?: string;
+  color?: string;
 }
-interface ButtonInfo{
-    text? : string;
-    children?: React.ReactElement;
-    disabled?: boolean,
-    onClick?: any
+interface ButtonInfo {
+  text?: string;
+  children?: React.ReactElement;
+  disabled?: boolean;
+  onClick?: any;
+  style?: ButtonStyle;
 }
-export const Button = ({ text , children  , disabled , onClick}:ButtonInfo) => {
+export const Button = ({
+  text,
+  children,
+  disabled,
+  onClick,
+  style,
+}: ButtonInfo) => {
   return (
-    <ButtonBody onClick={onClick} disabled={disabled} > 
-        {text}
-        <>
-        {children && children}
-        </>
+    <ButtonBody onClick={onClick} disabled={disabled} {...style}>
+      {text}
+      <>{children && children}</>
     </ButtonBody>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { MainContainer, InputParent, FormController } from "./Theme";
-import { InputController } from "../../sharedComponents";
+import { Button, InputController } from "../../sharedComponents";
 import { useDispatch, useSelector } from "react-redux";
 import { authAPI, itemsAPI } from "../../services/apis";
 import { SUCCESS_STATUS } from "../../constants/auth";
 import { log } from "console";
 import { addCookies } from "../../cookies";
 import axios from "axios";
+import { tokenSelector } from "../../services/interceptors/selectors";
+import { store } from "../../redux/store";
 
 const formData = {
   row: {
@@ -72,7 +74,7 @@ const formData = {
         type: "file",
         name: "file",
         label: "Upload File",
-        id:"upload-file",
+        id: "upload-file",
         eleClassName: "ele6",
         validation: { required: `File is required` },
       },
@@ -112,12 +114,13 @@ export const Main = () => {
   const [result, getResult] = useState<any>({});
   const dispatch = useDispatch<any>();
 
-  // const { signInInfo, items } = useSelector((state: any) => {
-  //   return {
-  //     signInInfo: state?.auth?.entities,
-  //     items: state?.items?.entities,
-  //   };
-  // });
+  const { signInInfo, items, tempToken } = useSelector((state: any) => {
+    return {
+      signInInfo: state?.auth?.entities,
+      items: state?.items?.entities,
+      tempToken: state?.auth?.tempToken,
+    };
+  });
 
   useEffect(() => {
     if (Object.keys(result).length > 0) {
@@ -132,6 +135,18 @@ export const Main = () => {
       console.log("clean up fucntion");
     };
   }, [result]);
+
+  useEffect(() => {
+    if (signInInfo) {
+      console.log("signInInfo", signInInfo);
+      dispatch(
+        authAPI.authSlice.actions.setAccessTempToken({
+          tempToken: "ahahahaha",
+        } as any)
+      );
+      console.log("tempToken", tempToken);
+    }
+  }, [signInInfo, tempToken]);
   useEffect(() => {
     (async () => {
       await dispatch(itemsAPI.getItemsList()({ urlParams: `?page=2` }));
@@ -146,6 +161,16 @@ export const Main = () => {
           formData={formData}
           title={"login"}
         />
+        <Button
+          text="tetx"
+          style={{
+            hoverBackgroundColor: "red",
+            backgroundColor: "yellow",
+            color: "green",
+          }}
+        >
+          <span>child</span>
+        </Button>
       </InputParent>
     </MainContainer>
   );
