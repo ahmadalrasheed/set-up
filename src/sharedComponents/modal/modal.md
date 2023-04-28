@@ -1,15 +1,15 @@
-import { MainContainer, InputParent, FormController } from "./Theme";
-import { BasicModal } from "../../sharedComponents/modal";
-import useModal from "../../hooks/useModal";
-import { Typography } from "@mui/material";
+# call
 
-export const Main = () => {
+`export const Main = () => {
   const [open, handleOpen, handleClose] = useModal();
   return (
     <MainContainer>
       <InputParent>
         <button onClick={handleOpen}>hehehhe</button>
-        <BasicModal open={open} handleClose={handleClose}>
+        <BasicModal
+          open={open}
+          handleClose={handleClose}
+        >
           <>
             {" "}
             <Typography id="modal-modal-title" variant="h6" component="h2">
@@ -23,4 +23,4 @@ export const Main = () => {
       </InputParent>
     </MainContainer>
   );
-};
+};`

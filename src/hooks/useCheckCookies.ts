@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authAPI } from "../services/apis";
-import addCookies from "../cookies/addCookies";
+import addCookies from "../utils/cookies/addCookies";
 
 function useCheckCookies(token: string, time: number) {
   const dispatch = useDispatch<any>();
