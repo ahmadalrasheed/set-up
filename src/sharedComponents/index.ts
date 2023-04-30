@@ -6,3 +6,4 @@ export { BasicTable } from "./table";
 export { TemporaryDrawer } from "./drawer";
 export { VerticalNav } from "./verticalNav";
 export { ListItems } from "./list";
+export { LanguageSwitcher } from "./languageSwitcher";

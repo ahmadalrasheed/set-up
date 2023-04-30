@@ -1,0 +1,11 @@
+{
+    "header": "Hello",
+    "footer": "footer",
+    "Inbox":"Inbox",
+    "Starred":"Starred",
+    "Send email":"Send email",
+    "Drafts":"Drafts",
+    "All mail":"All mail",
+    "Trash":"Trash",
+    "Spam":"Spam"
+}

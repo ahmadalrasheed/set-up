@@ -1,4 +1,4 @@
-import { VerticalNav } from "../../sharedComponents";
+import { TemporaryDrawer, VerticalNav } from "../../sharedComponents";
 import { MainContainer, InputParent, FormController } from "./Theme";
 export const Main = () => {
   return (
