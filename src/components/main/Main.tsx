@@ -1,11 +1,9 @@
-import { TemporaryDrawer, VerticalNav } from "../../sharedComponents";
-import { MainContainer, InputParent, FormController } from "./Theme";
+import { VerticalNav } from "../../sharedComponents";
+import { MainContainer } from "./Theme";
 export const Main = () => {
   return (
     <MainContainer>
-      <InputParent>
-        <VerticalNav isMobileDrawer={false} />
-      </InputParent>
+      <VerticalNav isMobileDrawer={false} />
     </MainContainer>
   );
 };
